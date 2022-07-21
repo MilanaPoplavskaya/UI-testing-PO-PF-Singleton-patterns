@@ -9,13 +9,10 @@ export class LoginPage extends BasePage {
     };
 
     async findElementInLoginPage() {
-        const element: WebElement = await this.driver.findElement((By.xpath(loginButton)));
+        const element: WebElement = await driver.findElement((By.xpath(loginButton)));
         await element.click();
         await driver.wait(until.elementLocated(By.css(loginLink)));
-    }
-
-    async findLinkInLoginPAge() {
         const link: WebElement = await driver.findElement(By.css(loginLink));
-        await link.isDisplayed();
+        return await link.isDisplayed();
     }
 }

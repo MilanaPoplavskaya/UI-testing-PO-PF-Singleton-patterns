@@ -19,10 +19,12 @@
   },
   "homepage": "https://github.com/MilanaPoplavskaya/UI-testing-with-PageObjects#readme",
   "devDependencies": {
+    "@types/chai": "^4.3.1",
     "@types/chromedriver": "^81.0.1",
     "@types/mocha": "^9.1.1",
     "@types/node": "^18.0.6",
     "@types/selenium-webdriver": "^4.1.1",
+    "chai": "^4.3.6",
     "chromedriver": "^103.0.0",
     "mocha": "^10.0.0",
     "selenium-webdriver": "^4.3.1",
