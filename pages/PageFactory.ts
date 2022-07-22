@@ -6,8 +6,8 @@ import {ProductsPage} from "./ProductsPage";
 import {AdsPage} from "./AdsPage";
 import {BasePage} from "./BasePage";
 
-export class PageFactoryTests {
-    static runningTheTests(driver: WebDriver, pageName: string) {
+export class PageFactory {
+    static runningTests(driver: WebDriver, pageName: string) {
         switch (pageName) {
             case "BasePage":
                 return new BasePage(driver);

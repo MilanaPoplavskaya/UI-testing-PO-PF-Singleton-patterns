@@ -1,7 +1,7 @@
 import {driver} from "../driver/webdriver";
 import assert from "assert";
 import {URLOfMainPage} from "./URL";
-import {PageFactoryTests} from "../pages/PageFactoryTests";
+import {PageFactory} from "../pages/PageFactory";
 import {BasePage} from "../pages/BasePage";
 import {expect} from "chai";
 import {LoginPage} from "../pages/LoginPage";
@@ -14,40 +14,34 @@ describe("onliner.by testing", () => {
 
 
     beforeEach(async () => {
-        const basePage = new BasePage(driver);
-        await basePage.visitPage(URLOfMainPage);
+        await PageFactory.runningTests(driver, "BasePage").visitPage(URLOfMainPage)
     });
     afterEach(async () => {
-        const basePage = new BasePage(driver);
-        await basePage.closeBrowser();
+        await PageFactory.runningTests(driver, "BasePage").closeBrowser();
     });
-
     it("Check login page", async () => {
-        const findElement = await PageFactoryTests.runningTheTests(driver, "Login") as LoginPage;
+        const findElement = await PageFactory.runningTests(driver, "Login") as LoginPage;
         await findElement.findElementInLoginPage();
         assert(findElement.findElementInLoginPage(), "Error: login page is not opened");
     });
     it("Check shopping cart", async () => {
-        const findCart = await PageFactoryTests.runningTheTests(driver, "Cart") as CartPage;
+        const findCart = await PageFactory.runningTests(driver, "Cart") as CartPage;
         await findCart.findElementInCartPage();
         expect(await findCart.getTextInCartPage()).to.equal("Корзина");
     });
     it("Check input field", async () => {
-        const checkImageAfterSendKeys = await PageFactoryTests.runningTheTests(driver, "Input") as InputPage;
+        const checkImageAfterSendKeys = await PageFactory.runningTests(driver, "Input") as InputPage;
         await checkImageAfterSendKeys.findInputField();
         assert(checkImageAfterSendKeys.findInputField(), "Error: image is not displayed")
     });
     it("Check products link", async () => {
-        const findLinkOfProduct = await PageFactoryTests.runningTheTests(driver, "Product") as ProductsPage;
+        const findLinkOfProduct = await PageFactory.runningTests(driver, "Product") as ProductsPage;
         await findLinkOfProduct.findLinkInProductPage();
         expect(await findLinkOfProduct.getText()).to.equal("Триммеры");
     });
     it("Check is the button enabled", async () => {
-        const findAds = await PageFactoryTests.runningTheTests(driver, "Ads") as AdsPage;
+        const findAds = await PageFactory.runningTests(driver, "Ads") as AdsPage;
         await findAds.checkButtonIsEnabled();
         assert(findAds.checkButtonIsEnabled(), "Error: image is not displayed")
     });
 });
-
-
-
